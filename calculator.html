@@ -4,56 +4,205 @@
     <title>
         Calendar
     </title>
-    <script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="script.js"></script>-->
+    <style type="text/css">
+        .main {
+            width: 500px;
+            height: 700px;
+            align-self: center;
+            background-color: gray;
+            margin-left: 200px;
+        }
+
+        .clsText {
+            width: 495px;
+            height: 40px;
+            text-align: right;
+            font-size: larger;
+        }
+
+        .clsTableMain {
+            width: 495px;
+            height: 660px;
+            align-content: center;
+            align-items: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .button {
+            height: 40px;
+            width: 60px;
+            background-color: silver;
+            color: black;
+            font-size: medium;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function onLoadScript() {
+            // alert('test');
+            var objButton = document.getElementById("click1"); //document.getElementsByClassName("button");
+
+            //objButton.addEventListener("click", showButtonText);
+        }
+
+        function showButtonText(objButton) {
+            //var objButtons = document.getElementsByClassName("button");
+            // objButtons.style.backgroundColor = "silver";
+            objButton.addEventListener('blur', function () {
+                objButton.style.backgroundColor = "silver";
+            });
+            objButton.style.backgroundColor = "yellow";
+            var objText = document.getElementById("calc_disp");
+
+            if (objButton.value != '=') {
+                objText.value = objText.value + objButton.value;
+            }
+
+            if (objButton.value == '=') {
+                if (objText.value.indexOf('+') > 0) {
+                    var arrValues = objText.value.split('+');
+                    objText.value = parseInt(arrValues[0]) + parseInt(arrValues[1]);
+                }
+
+            }
+        }
+    </script>
 </head>
-<body>
-    <div id="calci" style="float: left">
-    <div>
-        <input type="text" value="0" id="calc_disp">
+<body onload="onLoadScript();">
+    <div id="calci" class="main">
+
+        <input class='clsText' type="text" value="" id="calc_disp">
+        <div class="clsButtonsMain">
+            <table class="clsTableMain">
+                <tr>
+                    <td>
+                        <div>
+                            <input type="button" value="1" class="button" onclick="showButtonText(this)" onblur="">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="2" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="3" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="/" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <input type="button" value="4" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="5" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="6" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="*" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div>
+                            <input type="button" value="7" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="8" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="9" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="+" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div>
+                            <input type="button" value="0" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="." class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="=" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="button" value="-" class="button" onclick="showButtonText(this)">
+                        </div>
+                    </td>
+                </tr>
+
+                <!---
+                       <div>
+                        <input type="button" value="6" id="six">
+                    </div>
+                    <div>
+                        <input type="button" value="5" id="five">
+                    </div>
+                    <div>
+                        <input type="button" value="4" id="four">
+                    </div>
+                    <div>
+                        <input type="button" value="*" id="multiply">
+                    </div>
+                    <div>
+                        <input type="button" value="3" id="three">
+                    </div>
+                    <div>
+                        <input type="button" value="2" id="two">
+                    </div>
+                    <div>
+                        <input type="button" value="1" id="one">
+                    </div>
+                    <div>
+                        <input type="button" value="+" id="add">
+                    </div>
+                    <div>
+                        <input type="button" value="-" id="subtract">
+                    </div>
+                    <div>
+                        <input type="button" value="0" id="zero"></div>-->
+            </table>
+        </div>
     </div>
-    <div>
-        <input type="button" value="7" id="seven">
-    </div>
-    <div>
-        <input type="button" value="8" id="eight">
-    </div>
-    <div>
-        <input type="button" value="9" id="nine">
-    </div>    
-    <div>
-        <input type="button" value="/" id="divide">
-    </div>   
-    <div>
-        <input type="button" value="6" id="six">
-    </div>
-    <div>
-        <input type="button" value="5" id="five">
-    </div>
-    <div>
-        <input type="button" value="4" id="four">
-    </div>
-    <div>
-        <input type="button" value="*" id="multiply">
-    </div>    
-    <div>
-        <input type="button" value="3" id="three">
-    </div>
-    <div>
-        <input type="button" value="2" id="two">
-    </div>
-    <div>
-        <input type="button" value="1" id="one">
-    </div>
-    <div>
-        <input type="button" value="+" id="add">
-    </div>
-    <div>
-        <input type="button" value="-" id="subtract">
-    </div>
-    <div>
-        <input type="button" value="0" id="zero">
-    </div>    
-    </div>
+
 </body>
 
 </html>

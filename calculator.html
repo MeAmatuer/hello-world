@@ -76,8 +76,30 @@
 
         function evaluateExp(expr) {
             if (expr.indexOf('/') > 0) {
-                pos = expr.indexOf('/');
-                
+                var pos = expr.indexOf('/');
+                var sub_string = expr.substring(pos-1,pos+1);
+                var exp_val = parseInt(expr.charAt(pos-1))/parseInt(expr.charAt(pos+1));
+                expr.replace(sub_string,toString(exp_val));
+                return expr;
+            }
+            else if (expr.indexOf('*') > 0) {
+                var pos = expr.indexOf('*');
+                var sub_string = expr.substring(pos-1,pos+1);
+                var exp_val = parseInt(expr.charAt(pos-1))*parseInt(expr.charAt(pos+1));
+                expr.replace(sub_string,toString(exp_val));
+                return expr;
+            }else if (expr.indexOf('+') > 0) {
+                var pos = expr.indexOf('+');
+                var sub_string = expr.substring(pos-1,pos+1);
+                var exp_val = parseInt(expr.charAt(pos-1))+parseInt(expr.charAt(pos+1));
+                expr.replace(sub_string,toString(exp_val));
+                return expr;
+            }else if (expr.indexOf('-') > 0) {
+                var pos = expr.indexOf('-');
+                var sub_string = expr.substring(pos-1,pos+1);
+                var exp_val = parseInt(expr.charAt(pos-1))-parseInt(expr.charAt(pos+1));
+                expr.replace(sub_string,toString(exp_val));
+                return expr;
             }
         }
     </script>

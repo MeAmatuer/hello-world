@@ -57,17 +57,27 @@
             });
             objButton.style.backgroundColor = "yellow";
             var objText = document.getElementById("calc_disp");
-
+            var displaytext = objText;
             if (objButton.value != '=') {
                 objText.value = objText.value + objButton.value;
             }
 
-            if (objButton.value == '=') {
+            /*if (objButton.value == '=') {
                 if (objText.value.indexOf('+') > 0) {
                     var arrValues = objText.value.split('+');
                     objText.value = parseInt(arrValues[0]) + parseInt(arrValues[1]);
                 }
 
+            }*/
+            while (objText.value.indexOf('+') > 0 || objText.value.indexOf('-')>0 || objText.value.indexOf('*')>0 || objText.value.indexOf('/')>0) {
+                objText.value = evaluateExp(objText.value);
+            }
+        }
+
+        function evaluateExp(expr) {
+            if (expr.indexOf('/') > 0) {
+                pos = expr.indexOf('/');
+                
             }
         }
     </script>
